@@ -23,7 +23,7 @@ function CreateUser(req,res){
 }
 
 
-app.get('/:username', handleRequest)
+app.get('/:username', handleRequest); 
 app.post('/CreateUser',CreateUser)
 
 app.listen(port, () => {
