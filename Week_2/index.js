@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 // app.use(middleware);
 
-function CalculateSum(counter){
+function CalculateSum(counter){  
     let sum=0;
     for(let i=0;i<=counter;i++){
         sum =sum+i;
@@ -33,10 +33,9 @@ function CalculateMul(counter){
 }
 
 function handleRequest(req, res){
-    // let counter=req.query.counter;   //give request to browser;
-    console.log(req.body)
+    let counter=req.query.counter;   //give request to browser;
     // let counter=req.headers.counter;
-    let counter=req.body.counter;
+    // let counter=req.body.counter;
     
       let CalculatedSum=CalculateSum(counter);
       let CalculatedMul=CalculateMul(counter);
@@ -55,7 +54,11 @@ function CreateUser(req,res){
   res.send("Hello World")
 }
 
+function getHtml(req,res){
+  res.sendFile(__dirname + '/index.html')
+}
 
+app.get('/',getHtml)
 app.get('/:username', handleRequest); 
 app.post('/CreateUser',handleRequest)
 
