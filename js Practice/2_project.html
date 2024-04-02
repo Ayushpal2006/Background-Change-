@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html , body{
+            height: 100%;
+            width: 100%;
+        }
+
+        .circle{
+            height: 200px;
+            width: 200px;
+            border:2px solid black;
+            background-color: rgb(233, 136, 10);
+            border-radius: 100%;
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            
+        }
+    </style>
+
+    <div class="circle"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        var circle=document.querySelector(".circle")
+        window.addEventListener("mousemove",function(details){
+            var xPos=gsap.utils.mapRange(0,window.innerWidth,100+circle.getBoundingClientRect().width/2,window.innerWidth-(100+circle.getBoundingClientRect().width/2),details.clientX);
+            var yPos=gsap.utils.mapRange(0,window.innerHeight,50+circle.getBoundingClientRect().height/2,window.innerHeight-(50+circle.getBoundingClientRect().height/2),details.clientY);
+            
+            gsap.to(circle,{
+                left:xPos+"px",
+                top:yPos+"px",
+                ease: Power3
+            })
+            // circle.style.left=details.clientX+"px";
+            // circle.style.top=details.clientY+"px";
+        })
+    </script>
+</body>
+</html>

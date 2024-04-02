@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project</title>
+  </head>
+  <body>
+    <style>
+      .rectangle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 500px;
+        width: 700px;
+        background-color: lightslategrey;
+      }
+
+      .pop{
+        position: absolute;
+        height: 150px;
+        width: 100px;
+        background-color: rgb(240, 224, 1);
+        overflow: hidden;
+      }
+
+      .pop img{
+        
+        transform: translateY(80%);
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    </style>
+
+    <div class="rectangle"></div>
+
+    <script>
+
+const btn = document.querySelector(".rectangle");
+ 
+ // Throttling Function
+ const throttleFunction = (func, delay) => {
+     let prev = 0;
+     return (...args) => {
+         let now = new Date().getTime();
+         if (now - prev > delay) {
+             prev = now;
+             return func(...args);
+         }
+     }
+ }
+ btn.addEventListener("mousemove",
+     throttleFunction((details) => {
+        var div=document.createElement("div");
+        div.classList.add("pop")
+        div.style.left=details.clientX+"px";
+        div.style.top=details.clientY+"px";
+        document.body.appendChild(div);
+
+        var img=document.createElement("img");
+        img.setAttribute("src","https://images.unsplash.com/photo-1710631221945-202865ddd3a1?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        div.append(img);
+
+
+        setTimeout(function(){
+            div.remove();
+        },2000)
+     }, 500));
+    </script>
+  </body>
+</html>

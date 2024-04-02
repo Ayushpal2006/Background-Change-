@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .Rec{
+            position:absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            height: 200px;
+            width: 400px;
+            border: 2px solid black;
+        
+            
+        }
+    </style>
+    <div class="Rec"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var Rectangle=document.querySelector(".Rec");
+        Rectangle.addEventListener("mousemove",function(details){
+            var Dimension=Rectangle.getBoundingClientRect();
+            var xCoordinate=details.clientX-Dimension.left;
+
+
+            if(xCoordinate<Dimension.width/2){
+                // Rectangle.style.backgroundColor="rgb(255,0,0)";
+                var redColor=gsap.utils.mapRange(0, Dimension.width/2, 255, 0, xCoordinate);
+                
+                gsap.to(Rectangle,{
+                    backgroundColor:`rgb(${redColor},0,0)`,
+                    ease:Power4,
+                });
+            
+            }else {
+                var BlueColor=gsap.utils.mapRange(Dimension.width/2,Dimension.width, 0,255, xCoordinate);
+                
+                gsap.to(Rectangle,{
+                    backgroundColor:`rgb(0,0,${BlueColor})`,
+                    ease:Power4,
+                });
+            }
+        })
+
+        Rectangle.addEventListener("mouseleave",function(){
+            gsap.to(Rectangle,{
+                backgroundColor:"white"
+            })
+        })
+    </script>
+</body>
+</html>
