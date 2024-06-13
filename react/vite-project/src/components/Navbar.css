@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    display: flex;
+    gap: 35px;
+    list-style-type: none;
+    margin: 25px;
+    padding: 25px;
+}
