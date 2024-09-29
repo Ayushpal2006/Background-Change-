@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Background Color Change Project</title>
 </head>
 <body>
 
@@ -26,13 +25,14 @@
     <li>HTML</li>
     <li>CSS</li>
     <li>JavaScript</li>
+    <l1>react</l1>
 </ul>
 
 <h2>Getting Started</h2>
 <p>To run this project locally, follow these steps:</p>
 <ol>
     <li><strong>Clone the repository:</strong>
-        <pre><code>git clone https://github.com/yourusername/background-color-change.git</code></pre>
+        <pre><code>git clone https://github.com/Ayushpal2006/Background-Change-</code></pre>
     </li>
     <li><strong>Navigate into the project directory:</strong>
         <pre><code>cd background-color-change</code></pre>
